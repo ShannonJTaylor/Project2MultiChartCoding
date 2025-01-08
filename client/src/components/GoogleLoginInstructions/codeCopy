@@ -1,0 +1,73 @@
+/*Set Up Your Google Developer Console:
+
+Go to the Google Developer Console.
+
+Create a new project and enable the "OAuth consent screen."- Already done this!
+
+Create OAuth credentials and get your client ID.
+
+Install the Required Packages: Install @react-oauth/google in your project:
+
+bash
+npm install @react-oauth/google
+Configure Your React App: In your main app file, configure the Google OAuth provider:
+
+typescript
+import React from 'react';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import App from './App';
+
+const GOOGLE_CLIENT_ID = 'your-google-client-id';
+
+function Root() {
+  return (
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <App />
+    </GoogleOAuthProvider>
+  );
+}
+
+export default Root;
+Create the Google Login Component: Create a component for Google login:
+
+typescript
+import React from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+
+const GoogleLoginButton = () => {
+  const handleSuccess = (response) => {
+    console.log('Google Login Success:', response);
+  };
+
+  const handleError = (error) => {
+    console.log('Google Login Error:', error);
+  };
+
+  return (
+    <GoogleLogin
+      onSuccess={handleSuccess}
+      onError={handleError}
+    />
+  );
+};
+
+export default GoogleLoginButton;
+Add the Component to Your App: Include the Google login button in your app’s login screen:
+
+typescript
+import React from 'react';
+import GoogleLoginButton from './components/GoogleLoginButton';
+
+const Login = () => {
+  return (
+    <div>
+      <h2>Login</h2>
+      <GoogleLoginButton />
+      {/* Include your standard login form here }
+//     </div>
+//   );
+// };
+
+// export default Login;
+// By following these steps, you should be able to integrate Google login alongside your standard authentication method. Good luck with your project, and feel free to ask if you need further help!
+

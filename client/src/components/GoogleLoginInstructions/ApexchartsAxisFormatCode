@@ -1,0 +1,70 @@
+Date/Time: https://apexcharts.com/docs/datetime/
+AxisLabels: https://apexcharts.com/docs/formatting-axes-labels/
+Grid: https://apexcharts.com/docs/grid/
+Legend: https://apexcharts.com/docs/legend/  Ths is interactivity with Legend sectoin To set global options for the legend, it should be defined in Apex.legend
+Multi-Axis Chart: https://apexcharts.com/docs/chart-types/multiple-yaxis-scales/
+Synchronized Charts: https://apexcharts.com/docs/chart-types/synchronized-charts/
+Working with data: https://apexcharts.com/docs/series/
+    3.2) Date strings
+series: [{
+  data: [{ x: '05/06/2014', y: 54 }, { x: '05/08/2014', y: 17 } , ... , { x: '05/28/2014', y: 26 }]
+}]
+The DateTime String which you provide should return true when parsed through JavaScript’s Date.parse() function
+
+
+Data Flow Diagram (Plaintext):
+User Input -> InputForm -> addDataPoint -> App State -> ChartComponent -> Render Chart
+
+
+InputForm:
+
+Handles user input.
+
+Calls addDataPoint (a function defined in the App component) to pass the collected data up to the App component.
+
+App:
+
+Manages the state of the collected data.
+
+Passes the data down to the ChartComponent as props.
+
+ChartComponent:
+
+Receives the data as props.
+
+Renders the chart using the received data.
+
+Summary:
+User Inputs Data:
+
+The InputForm component collects date (x-axis) and value (y-axis) inputs from the user.
+
+When the user submits the form, the data point is passed to the App component using the addDataPoint function.
+
+State Management:
+
+The App component uses custom hooks (useChartData and useUserData) to manage the state of both the fetched chart data and the user-provided data points.
+
+The useChartData hook fetches initial chart data from the API.
+
+The useUserData hook manages the user-provided data points.
+
+Rendering the Chart:
+
+The ChartComponent receives the combined data (fetched chart data and user-provided data) from the App component as props.
+
+The ChartComponent uses the react-apexcharts library to render the chart with the provided data.
+
+How it Works:
+Initial Load:
+
+When the app loads, useChartData fetches the initial chart data from the API and stores it in the state.
+
+useUserData manages an empty array for user data points initially.
+
+User Interaction:
+
+As the user inputs new data points, addDataPoint updates the user data state.
+
+The combined data is then passed to the ChartComponent, which renders the updated chart.
+
