@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {DataPoint} from './useUserData'; //Update the link here. 
+import {DataPoint} from '../useUserData'; //Update the link here. 
 
 interface ChartData {
     id: number;
